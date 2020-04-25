@@ -1,0 +1,16 @@
+Common Dax Formulas:
+
+1 Month Moving Average = 
+AVERAGEX(
+	DATESINPERIOD( Dates[Date],
+		LASTDATE( Dates[Date] ),
+		-1, MONTH ),
+		["Your Measure"] )
+
+
+Cumulative Total = 
+Calculate( ["Your Measure"],
+	FILTER( ALLSELECTED( Dates ),
+		Dates[Date] <= MAX( Dates[Date] ) ) )
+
+
